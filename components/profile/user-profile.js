@@ -1,27 +1,30 @@
-import { useState, useEffect } from 'react';
-import { getSession } from 'next-auth/client';
+// import { useState, useEffect } from 'react';
+// import { getSession } from 'next-auth/client';
 
 import ProfileForm from './profile-form';
 import classes from './user-profile.module.css';
 
 function UserProfile() {
   // Redirect away if NOT auth
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   // const [loadedSession, setLoadedSession] = useState();
 
-  useEffect(()=> {
-    getSession().then(session => {
-      if(!session) {
-        window.location.href = '/auth';
-      } else {
-        setIsLoading(false);
-      }
-    })
-  },[]);
+  // use this approach if only using client-side validation
+  // this logic has been commented out, because server-side logic was applied instead in the profile page.
 
-  if(isLoading) {
-    return <p className={classes.profile}>Loading...</p>;
-  }
+  // useEffect(()=> {
+  //   getSession().then(session => {
+  //     if(!session) {
+  //       window.location.href = '/auth';
+  //     } else {
+  //       setIsLoading(false);
+  //     }
+  //   })
+  // },[]);
+
+  // if(isLoading) {
+  //   return <p className={classes.profile}>Loading...</p>;
+  // }
 
   return (
     <section className={classes.profile}>

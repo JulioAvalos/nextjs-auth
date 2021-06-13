@@ -10,8 +10,8 @@ async function createUser (email, password ){
     }
   });
 
-  const data = response.json();
-
+  const data = await response.json();
+  
   if(!response.ok) {
     throw new Error(data.message || 'Something went wrong!');
   }
@@ -19,7 +19,7 @@ async function createUser (email, password ){
   return data;
 }
 
-async function AuthForm() {
+function AuthForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -29,7 +29,7 @@ async function AuthForm() {
     setIsLogin((prevState) => !prevState);
   }
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
